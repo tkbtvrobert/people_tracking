@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- rosbag play -->
+  <!-- <arg name="bag" value="/home/frank/people_2022-07-11-20-54-38.bag"/> -->
+  <!-- <arg name="bag" value="/home/frank/people_2022-07-20-14-22-05.bag"/> -->
+  <!-- <arg name="bag" value="/home/frank/people_2022-08-11-12-37-31.bag"/> -->
+  <arg name="bag" value="/home/frank/people_2022-08-17-13-27-52.bag"/>
+  <param name="use_sim_time" value="true"/>
+  <node pkg="rosbag" type="play" name="rosbag_play" args="--clock $(arg bag)" required="true"/>
+
+  <!-- arguments -->
+  <arg name="nodelet_manager" default="velodyne_nodelet_manager" />
+  <node pkg="nodelet" type="nodelet" name="$(arg nodelet_manager)" args="manager" output="screen"/>
+
+  <node pkg="nodelet" type="nodelet" name="hdl_people_detection_nodelet" args="load hdl_people_tracking/HdlPeopleDetectionNodelet $(arg nodelet_manager)">
+  	<param name="static_sensor" value="true"/>
+    <param name="downsample_resolution" value="0.1"/>
+    <!-- background subtraction params -->
+    <param name="backsub_resolution" value="0.2"/>
+    <param name="backsub_occupancy_thresh" value="2"/>
+    <!-- clustering params -->
+    <param name="cluster_min_pts" value="25"/>
+    <param name="cluster_max_pts" value="2048"/>
+    <param name="cluster_min_size_x" value="0.2"/>
+    <param name="cluster_min_size_y" value="0.2"/>
+    <param name="cluster_min_size_z" value="0.3"/>
+    <param name="cluster_max_size_x" value="1.0"/>
+    <param name="cluster_max_size_y" value="1.0"/>
+    <param name="cluster_max_size_z" value="2.0"/>
+    <!-- classification params -->
+    <param name="enable_classification" value="false"/>
+  </node>
+
+  <node pkg="nodelet" type="nodelet" name="hdl_people_tracking_nodelet" args="load hdl_people_tracking/HdlPeopleTrackingNodelet $(arg nodelet_manager)">
+    <!-- tracks with larger covariance matrix trace than this value will be removed -->
+    <param name="remove_trace_thresh" value="1.0"/>
+    <param name="human_radius" value="0.4"/>
+  </node>
+  
+    <!-- Danger Table and Risk Factor -->
+  <node pkg="hdl_people_tracking" type="danger_table.py" name="danger_table" output="screen"/>
+
+    <!-- Rviz -->
+  <node pkg="rviz" type="rviz" name="lidar_rviz" args="-d $(find hdl_localization)/rviz/hdl_localization_.rviz"/>
+
+</launch>
