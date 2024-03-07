@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<!-- Publush the simulated world and spawn the 3D LiDAR sensor -->
+<!-- 光達產生器 -->
+<launch>
+  <arg name="lidar_name" value="lidar"/>
+  <node pkg="tf" type="static_transform_publisher" name="hdl32"
+    args="0 0 0.0 0.0 0.0 0.0 /map  /base_footprint 100" />
+  <!-- Spawn the 3D LiDAR sensor -->
+  <param name="lidar_description" command="$(find xacro)/xacro --inorder '$(find lidar_simulator)/urdf/example.urdf.xacro'" /> 
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_model" args="-urdf -param lidar_description -model example"/>
+  <!-- Publish the tf -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="lidar_state_publisher">
+    <param name="publish_frequency" type="double" value="30.0" />
+    <remap from="robot_description" to="lidar_description" />
+  </node> 
+</launch>

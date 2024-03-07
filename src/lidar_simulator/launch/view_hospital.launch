@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find lidar_simulator)/launch/hospital.launch">
+    <arg name="gui" default="true"/>
+  </include>
+</launch>

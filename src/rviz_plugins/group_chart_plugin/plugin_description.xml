@@ -1,0 +1,9 @@
+<library path="lib/libgroup_chart_plugin">
+  <class name="GroupChart"
+         type="group_chart::GroupChart"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget allowing simple diff-drive style robot base control.
+    </description>
+  </class>
+</library>

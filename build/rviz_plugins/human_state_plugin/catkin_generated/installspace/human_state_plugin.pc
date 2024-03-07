@@ -1,0 +1,8 @@
+prefix=/home/frank/people_tracking_ws/install
+
+Name: human_state_plugin
+Description: Description of human_state_plugin
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

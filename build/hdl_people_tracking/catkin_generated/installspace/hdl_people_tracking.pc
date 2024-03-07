@@ -1,0 +1,8 @@
+prefix=/home/frank/people_tracking_ws/install
+
+Name: hdl_people_tracking
+Description: Description of hdl_people_tracking
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lhdl_people_tracking
+Requires: nodelet pcl_ros roscpp sensor_msgs message_runtime

@@ -1,0 +1,7 @@
+<!-- Spawn the human model -->
+<!-- 人類產生器 -->
+<launch>
+    <node name="human_spawner" pkg="lidar_simulator" type="human_spawner_static.py">
+        <param name="spawner_human_num" value='10' />
+    </node>
+</launch>

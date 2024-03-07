@@ -1,0 +1,8 @@
+prefix=/home/frank/people_tracking_ws/devel
+
+Name: group_plugin
+Description: Description of group_plugin
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,2 @@
+set(my_msg_MESSAGE_FILES "/home/frank/people_tracking_ws/src/my_msg/msg/group.msg;/home/frank/people_tracking_ws/src/my_msg/msg/kdanger.msg;/home/frank/people_tracking_ws/src/my_msg/msg/kdangerArray.msg;/home/frank/people_tracking_ws/src/my_msg/msg/Human.msg;/home/frank/people_tracking_ws/src/my_msg/msg/HumanArray.msg;/home/frank/people_tracking_ws/src/my_msg/msg/HumanGazebo.msg;/home/frank/people_tracking_ws/src/my_msg/msg/groupChart.msg")
+set(my_msg_SERVICE_FILES "")

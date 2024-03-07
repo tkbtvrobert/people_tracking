@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<robot name="person_standing">
+  <link name="person_standing__link">
+    <inertial>
+      <mass value="80.0"/>
+      <origin rpy="0 0 0" xyz="0   -0.1   0.95"/>
+      <inertia ixx="24.88" ixy="0" ixz="0" iyy="25.73" iyz="0" izz="2.48"/>
+    </inertial>
+    <collision name="person_standing__bottom">
+      <origin rpy="0 0 0" xyz="0   -0.1   0.01"/>
+      <geometry>
+        <box size="0.5 0.35 0.02"/>
+      </geometry>
+    </collision>
+    <collision name="person_standing__person">
+      <origin rpy="0.04 0   0" xyz="0   0   0.02"/>
+      <geometry>
+        <mesh filename="package://lidar_simulator/meshes/standing.dae" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </collision>
+    <visual name="person_standing__visual">
+      <origin rpy="0.04 0   0" xyz="0   0   0.02"/>
+      <geometry>
+        <mesh filename="package://lidar_simulator/meshes/standing.dae" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>

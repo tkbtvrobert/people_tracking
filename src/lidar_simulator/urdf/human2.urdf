@@ -1,0 +1,33 @@
+<robot name="human2">
+  <include filename="$(find lidar_simulator)/urdf/human2.gazebo"/>
+  <link name="base_link">
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0001" />
+      <inertia ixx="3" ixy="0.0" ixz="0.0" iyy="3" iyz="0.0" izz="3" />
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.156 -0.08 0"/>
+      <geometry>
+        <mesh filename="package://lidar_simulator/meshes/goku-support-free-remix-robin-3dverse2.stl" scale="0.2 0.2 0.2"/>
+      </geometry>
+    </visual>
+
+    <collision name="collision_1">
+      <origin rpy="0 0 0" xyz="0.156 0.08 0.06"/>
+      <geometry>
+      <cylinder length="0.07" radius="0.36"/>
+      </geometry>
+    </collision>
+
+    <collision name="mesh">
+      <laser_retro>1</laser_retro>
+      <origin rpy="0 0 0" xyz="-0.156 -0.08 0"/>
+      <geometry>
+        <mesh filename="package://lidar_simulator/meshes/goku-support-free-remix-robin-3dverse2.stl" scale="0.2 0.2 0.2"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

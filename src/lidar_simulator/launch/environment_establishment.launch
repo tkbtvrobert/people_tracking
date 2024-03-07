@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<launch>
+<!-- Entire world -->
+  <include file="$(find lidar_simulator)/launch/static_world.launch"/>
+<!-- Publish LiDAR model to Gazebo and ROS -->
+  <include file="$(find lidar_simulator)/launch/lidar_spawner.launch"/>
+
+  <!-- RViz -->
+  <!-- <arg name="rviz" default="true"/>
+  <node if="$(arg rviz)" pkg="rviz" type="rviz" name="$(anon rviz)" respawn="false" output="screen" args="-d $(find velodyne_description)/rviz/example.rviz" /> -->
+
+</launch>

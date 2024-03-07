@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!-- Publush the simulated world and spawn the 3D LiDAR sensor -->
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="verbose" default="false"/>
+  <arg name="world_name" default="$(find lidar_simulator)/world/static3.world"/>
+  <!-- <arg name="world_name" default="$(find lidar_simulator)/worlds/cafe.world"/> -->
+  <!-- <arg name="world_name" default="$(find lidar_simulator)/worlds/small_house.world"/> -->
+  <!-- <arg name="lidar_name" value="vlp"/> -->
+
+  <!-- Start gazebo and load the world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+    <arg name="verbose" value="$(arg verbose)"/>
+    <arg name="world_name" value="$(arg world_name)"/>
+  </include>
+  
+  <!-- <arg name="map_file" default="$(find lidar_simulator)/maps/gazebo_map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /> -->
+</launch>

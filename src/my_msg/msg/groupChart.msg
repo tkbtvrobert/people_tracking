@@ -1,0 +1,2 @@
+int64 numHuman
+float64 riskFactor
